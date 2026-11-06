@@ -129,7 +129,12 @@
     if (o.getAttribute('data-none')) { window.__setRate(2.9328, 'unincorporated Clark County'); line.textContent = 'Figures for ' + o.text + ' are coming soon. Ask me for current sales and dues.'; pts.innerHTML = ''; return; }
     var low = +o.getAttribute('data-low'), med = +o.getAttribute('data-med'), high = +o.getAttribute('data-high'), hoa = +o.getAttribute('data-hoa');
     line.innerHTML = (low ? 'Recent sales ran ' + short(low) + ' to ' + short(high) + ', median <b>' + fmt(med) + '</b>' : 'Median <b>' + fmt(med) + '</b>') + ' (' + o.getAttribute('data-period') + '). HOA: ' + o.getAttribute('data-hoanote') + '.';
-    var b = '';
+    var b = '', chips = o.getAttribute('data-chips');
+    if (chips) {
+      JSON.parse(chips).forEach(function (c) { b += '<button type="button" class="chip" data-p="' + c[1] + '" data-h="' + (c[2] || '') + '">' + c[0] + '</button>'; });
+      pts.innerHTML = b; window.__setRate(+o.getAttribute('data-rate') || 3.2782, o.getAttribute('data-district') || 'City of Las Vegas');
+      line.innerHTML = 'Prices vary by neighborhood (' + o.getAttribute('data-period') + '). HOA: ' + o.getAttribute('data-hoanote') + '. Pick a neighborhood:'; var first = JSON.parse(chips)[2] || JSON.parse(chips)[0]; if (first[2]) setv('m-hoa', first[2]); usePrice(first[1]); return;
+    }
     if (low) b += '<button type="button" class="chip" data-p="' + low + '">Low end ' + short(low) + '</button>';
     b += '<button type="button" class="chip" data-p="' + med + '">Median ' + short(med) + '</button>';
     if (high) b += '<button type="button" class="chip" data-p="' + high + '">High end ' + short(high) + '</button>';
@@ -139,7 +144,7 @@
     usePrice(med);
   }
   pick.addEventListener('change', show);
-  info.addEventListener('click', function (e) { var b = e.target.closest('[data-p]'); if (b) usePrice(+b.getAttribute('data-p')); });
+  info.addEventListener('click', function (e) { var b = e.target.closest('[data-p]'); if (!b) return; if (b.getAttribute('data-h')) setv('m-hoa', +b.getAttribute('data-h')); usePrice(+b.getAttribute('data-p')); });
   var h = (location.hash || '').slice(1);
   if (h && pick.querySelector('option[value="' + h + '"]')) { pick.value = h; show(); }
 })();
