@@ -227,3 +227,11 @@ p{max-width:36em}
 .c-points .chip{font:inherit;font-size:15px;padding:8px 14px;border:1px solid var(--rule);border-radius:999px;background:#fff;cursor:pointer;color:inherit}
 .c-points .chip[aria-pressed="true"]{background:var(--indigo,#1C2541);color:#fff;border-color:transparent}
 .prose .grades{padding:0;margin-left:0}.prose .grades li{margin:0}
+.tbl{overflow-x:auto;margin-top:16px;-webkit-overflow-scrolling:touch}
+table.golf{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+table.golf th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 12px 8px 0;border-bottom:1px solid var(--rule)}
+table.golf td{padding:12px 12px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.golf td b{display:block}
+table.golf td .small{display:block;margin-top:2px}
+table.golf a{color:inherit}
+.tbl + h3{margin-top:36px}
