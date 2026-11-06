@@ -204,3 +204,13 @@ p{max-width:36em}
 .cal-box.open{padding:0;min-height:640px;overflow:auto}
 .cal-pick{display:flex;flex-wrap:wrap;gap:10px}
 .cal-switch{padding:14px 14px 0}
+.snap{margin-top:20px}
+.snap-dl{display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:0;border-top:1px solid var(--rule)}
+.snap-dl dt,.snap-dl dd{padding:10px 0;border-bottom:1px solid var(--rule);margin:0}
+.snap-dl dt{font-size:14px;color:var(--muted,#5b6070);padding-right:16px}
+.snap-dl dd b{display:block;font-size:24px}
+.snap-dl dd span{display:block;font-size:13px;color:var(--muted,#5b6070)}
+.snap-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.snap-src{margin-top:12px}
+.snap-note{padding:14px 0}
+@media (max-width:640px){.snap-dl{grid-template-columns:1fr}.snap-dl dt{border-bottom:0;padding-bottom:0}}
