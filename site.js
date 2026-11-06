@@ -105,3 +105,26 @@
   });
   calcMortgage(); calcAfford(); calcNet(); calc1031();
 })();
+
+/* Community snapshot picker */
+(function () {
+  var pick = document.getElementById('c-pick');
+  if (!pick) return;
+  function show(id) {
+    document.querySelectorAll('[data-snap]').forEach(function (p) { p.hidden = p.getAttribute('data-snap') !== id; });
+    try { if (id) history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+  pick.addEventListener('change', function () { show(pick.value); });
+  var h = (location.hash || '').slice(1);
+  if (h && pick.querySelector('option[value="' + h + '"]')) { pick.value = h; show(h); }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-use-price]');
+    if (!b) return;
+    var price = document.getElementById('m-price'), hoa = document.getElementById('m-hoa');
+    if (price && b.getAttribute('data-use-price')) { price.value = b.getAttribute('data-use-price'); price.dispatchEvent(new Event('input', { bubbles: true })); }
+    if (hoa && b.getAttribute('data-use-hoa')) { hoa.value = b.getAttribute('data-use-hoa'); hoa.dispatchEvent(new Event('input', { bubbles: true })); }
+    var down = document.getElementById('m-down');
+    if (down && price) { down.value = Math.round(+price.value * 0.2); down.dispatchEvent(new Event('input', { bubbles: true })); }
+    var t = price && price.closest('.tool'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
