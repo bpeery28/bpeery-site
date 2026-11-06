@@ -128,3 +128,11 @@
     var t = price && price.closest('.tool'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();
+
+/* Click-to-load community maps */
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('[data-map-load]');
+  if (!b) return;
+  var box = b.closest('[data-map]');
+  box.innerHTML = '<iframe title="Map" src="' + box.getAttribute('data-map') + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';
+});
