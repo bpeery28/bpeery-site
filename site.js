@@ -114,6 +114,7 @@
   function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
   function short(n) { return n >= 1e6 ? '$' + (n / 1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.?0+$/, '') + 'M' : '$' + Math.round(n / 1000) + 'K'; }
   function setv(id, v) { var el = document.getElementById(id); if (el) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); } }
+  window.__setRate = window.__setRate || function () {};
   function usePrice(p) {
     setv('m-price', p); setv('m-down', Math.round(p * 0.2)); setv('n-price', p);
     info.querySelectorAll('[data-p]').forEach(function (b) { b.setAttribute('aria-pressed', +b.getAttribute('data-p') === p ? 'true' : 'false'); });
@@ -125,7 +126,7 @@
     info.hidden = false;
     var line = info.querySelector('.c-line'), pts = info.querySelector('.c-points'), more = info.querySelector('.c-more');
     more.innerHTML = '<a href="/' + id + '">Full market snapshot and map for ' + o.text + '</a>';
-    if (o.getAttribute('data-none')) { line.textContent = 'Figures for ' + o.text + ' are coming soon. Ask me for current sales and dues.'; pts.innerHTML = ''; return; }
+    if (o.getAttribute('data-none')) { window.__setRate(2.9328, 'unincorporated Clark County'); line.textContent = 'Figures for ' + o.text + ' are coming soon. Ask me for current sales and dues.'; pts.innerHTML = ''; return; }
     var low = +o.getAttribute('data-low'), med = +o.getAttribute('data-med'), high = +o.getAttribute('data-high'), hoa = +o.getAttribute('data-hoa');
     line.innerHTML = (low ? 'Recent sales ran ' + short(low) + ' to ' + short(high) + ', median <b>' + fmt(med) + '</b>' : 'Median <b>' + fmt(med) + '</b>') + ' (' + o.getAttribute('data-period') + '). HOA: ' + o.getAttribute('data-hoanote') + '.';
     var b = '';
@@ -134,6 +135,7 @@
     if (high) b += '<button type="button" class="chip" data-p="' + high + '">High end ' + short(high) + '</button>';
     pts.innerHTML = b;
     if (hoa) setv('m-hoa', hoa);
+    window.__setRate(+o.getAttribute('data-rate') || 3.2782, o.getAttribute('data-district') || 'City of Las Vegas');
     usePrice(med);
   }
   pick.addEventListener('change', show);
@@ -149,3 +151,25 @@ document.addEventListener('click', function (e) {
   var box = b.closest('[data-map]');
   box.innerHTML = '<iframe title="Map" src="' + box.getAttribute('data-map') + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';
 });
+
+/* Property tax and insurance follow the price (Clark County 2026-27 rates) */
+(function () {
+  var price = document.getElementById('m-price'), tax = document.getElementById('m-tax'), ins = document.getElementById('m-ins');
+  if (!price || !tax || !ins) return;
+  var rate = 3.2782, ownTax = false, ownIns = false;
+  function upd() {
+    var p = parseFloat(String(price.value).replace(/[^0-9.]/g, '')) || 0;
+    if (!ownTax) { tax.value = Math.round(p * 0.8 * 0.35 * rate / 100); tax.dispatchEvent(new Event('input', { bubbles: true })); }
+    if (!ownIns) { ins.value = Math.round(p * 0.6 * 0.00435); ins.dispatchEvent(new Event('input', { bubbles: true })); }
+  }
+  window.__setRate = function (r, district) {
+    rate = r; var el = document.getElementById('m-taxrate');
+    if (el) el.textContent = '$' + r.toFixed(4) + ' per $100, ' + district;
+    upd();
+  };
+  price.addEventListener('input', upd);
+  tax.addEventListener('input', function (e) { if (e.isTrusted) ownTax = true; });
+  ins.addEventListener('input', function (e) { if (e.isTrusted) ownIns = true; });
+  var pk = document.getElementById('c-pick'), o = pk && pk.value ? pk.options[pk.selectedIndex] : null;
+  if (o && o.getAttribute('data-rate')) window.__setRate(+o.getAttribute('data-rate'), o.getAttribute('data-district')); else upd();
+})();
