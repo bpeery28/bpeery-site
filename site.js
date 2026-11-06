@@ -106,27 +106,40 @@
   calcMortgage(); calcAfford(); calcNet(); calc1031();
 })();
 
-/* Community snapshot picker */
+/* Community picker feeds the calculators */
 (function () {
   var pick = document.getElementById('c-pick');
   if (!pick) return;
-  function show(id) {
-    document.querySelectorAll('[data-snap]').forEach(function (p) { p.hidden = p.getAttribute('data-snap') !== id; });
-    try { if (id) history.replaceState(null, '', '#' + id); } catch (e) {}
+  var info = document.getElementById('c-info');
+  function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+  function short(n) { return n >= 1e6 ? '$' + (n / 1e6).toFixed(n >= 1e7 ? 1 : 2).replace(/\.?0+$/, '') + 'M' : '$' + Math.round(n / 1000) + 'K'; }
+  function setv(id, v) { var el = document.getElementById(id); if (el) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); } }
+  function usePrice(p) {
+    setv('m-price', p); setv('m-down', Math.round(p * 0.2)); setv('n-price', p);
+    info.querySelectorAll('[data-p]').forEach(function (b) { b.setAttribute('aria-pressed', +b.getAttribute('data-p') === p ? 'true' : 'false'); });
   }
-  pick.addEventListener('change', function () { show(pick.value); });
+  function show() {
+    var o = pick.options[pick.selectedIndex], id = pick.value;
+    if (!id) { info.hidden = true; return; }
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+    info.hidden = false;
+    var line = info.querySelector('.c-line'), pts = info.querySelector('.c-points'), more = info.querySelector('.c-more');
+    more.innerHTML = '<a href="/' + id + '">Full market snapshot and map for ' + o.text + '</a>';
+    if (o.getAttribute('data-none')) { line.textContent = 'Figures for ' + o.text + ' are coming soon. Ask me for current sales and dues.'; pts.innerHTML = ''; return; }
+    var low = +o.getAttribute('data-low'), med = +o.getAttribute('data-med'), high = +o.getAttribute('data-high'), hoa = +o.getAttribute('data-hoa');
+    line.innerHTML = (low ? 'Recent sales ran ' + short(low) + ' to ' + short(high) + ', median <b>' + fmt(med) + '</b>' : 'Median <b>' + fmt(med) + '</b>') + ' (' + o.getAttribute('data-period') + '). HOA: ' + o.getAttribute('data-hoanote') + '.';
+    var b = '';
+    if (low) b += '<button type="button" class="chip" data-p="' + low + '">Low end ' + short(low) + '</button>';
+    b += '<button type="button" class="chip" data-p="' + med + '">Median ' + short(med) + '</button>';
+    if (high) b += '<button type="button" class="chip" data-p="' + high + '">High end ' + short(high) + '</button>';
+    pts.innerHTML = b;
+    if (hoa) setv('m-hoa', hoa);
+    usePrice(med);
+  }
+  pick.addEventListener('change', show);
+  info.addEventListener('click', function (e) { var b = e.target.closest('[data-p]'); if (b) usePrice(+b.getAttribute('data-p')); });
   var h = (location.hash || '').slice(1);
-  if (h && pick.querySelector('option[value="' + h + '"]')) { pick.value = h; show(h); }
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-use-price]');
-    if (!b) return;
-    var price = document.getElementById('m-price'), hoa = document.getElementById('m-hoa');
-    if (price && b.getAttribute('data-use-price')) { price.value = b.getAttribute('data-use-price'); price.dispatchEvent(new Event('input', { bubbles: true })); }
-    if (hoa && b.getAttribute('data-use-hoa')) { hoa.value = b.getAttribute('data-use-hoa'); hoa.dispatchEvent(new Event('input', { bubbles: true })); }
-    var down = document.getElementById('m-down');
-    if (down && price) { down.value = Math.round(+price.value * 0.2); down.dispatchEvent(new Event('input', { bubbles: true })); }
-    var t = price && price.closest('.tool'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
+  if (h && pick.querySelector('option[value="' + h + '"]')) { pick.value = h; show(); }
 })();
 
 /* Click-to-load community maps */
