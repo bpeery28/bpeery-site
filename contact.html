@@ -38,23 +38,29 @@
 </section>
 <section class="band band-paper" id="book" style="padding-top:48px">
   <div class="wrap split">
-    <div><h2>Book a 15-minute call</h2><p style="margin-top:12px">Pick any open time and I&rsquo;ll call you at the number you give. Use it to talk through a move, a sale, or whether a 1031 exchange fits.</p><p class="small" style="margin-top:12px">Scheduling runs on Cal.com, which loads only when you click.</p></div>
+    <div><h2>Book a 15-minute call</h2><p style="margin-top:12px">Pick an open time and I&rsquo;ll call you at the number you give. Use it to talk through a move, a sale, or whether a 1031 exchange fits.</p><p class="small" style="margin-top:12px">Weekday calls are Monday through Thursday, plus Friday until 1 pm. Friday afternoon and weekend calls need at least 48 hours&rsquo; notice. Scheduling runs on Cal.com, which loads only when you click.</p></div>
     <div>
       <div id="cal-inline" class="cal-box">
-        <button class="btn" type="button" id="cal-load">Show open times</button>
-        <p class="small" style="margin-top:12px">Or open the booking page directly: <a href="https://cal.com/brianpeery/15min" target="_blank" rel="noopener">cal.com/brianpeery/15min</a></p>
+        <div class="cal-pick"><button class="btn" type="button" data-cal="brianpeery/15min">Show weekday times</button><button class="btn btn-quiet" type="button" data-cal="brianpeery/15min-weekend">Friday afternoon &amp; weekends</button></div>
+        <p class="small" style="margin-top:12px">Or open the booking page directly: <a href="https://cal.com/brianpeery/15min" target="_blank" rel="noopener">weekdays</a> &middot; <a href="https://cal.com/brianpeery/15min-weekend" target="_blank" rel="noopener">Friday afternoon &amp; weekends</a></p>
       </div>
     </div>
   </div>
 </section>
 <script>
-document.getElementById('cal-load').addEventListener('click',function(){
-  var box=document.getElementById('cal-inline');box.innerHTML='';box.classList.add('open');
-  (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-  Cal("init", "consult", {origin: "https://app.cal.com"});
-  Cal.ns.consult("inline", {elementOrSelector: "#cal-inline", calLink: "brianpeery/15min", config: {layout: "month_view"}});
-  Cal.ns.consult("ui", {hideEventTypeDetails: false, layout: "month_view"});
-});
+(function(){
+  var box=document.getElementById('cal-inline'),n=0;
+  function load(link){
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    var ns="c"+(++n),weekend=link.indexOf('weekend')>0;
+    box.innerHTML='<div class="cal-pick cal-switch"><button class="btn btn-quiet" type="button" data-cal="'+(weekend?'brianpeery/15min':'brianpeery/15min-weekend')+'">'+(weekend?'Switch to weekday times':'Friday afternoon &amp; weekends')+'</button></div><div id="cal-'+ns+'"></div>';
+    box.classList.add('open');
+    Cal("init", ns, {origin: "https://app.cal.com"});
+    Cal.ns[ns]("inline", {elementOrSelector: "#cal-"+ns, calLink: link, config: {layout: "month_view"}});
+    Cal.ns[ns]("ui", {hideEventTypeDetails: false, layout: "month_view"});
+  }
+  box.addEventListener('click',function(e){var b=e.target.closest('[data-cal]');if(b)load(b.getAttribute('data-cal'));});
+})();
 </script>
 <section class="band band-paper" style="padding-top:24px">
   <div class="wrap split">
