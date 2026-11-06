@@ -202,3 +202,5 @@ p{max-width:36em}
 @media (max-width:560px){.comm-grid{grid-template-columns:1fr}}
 .cal-box{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:28px}
 .cal-box.open{padding:0;min-height:640px;overflow:auto}
+.cal-pick{display:flex;flex-wrap:wrap;gap:10px}
+.cal-switch{padding:14px 14px 0}
