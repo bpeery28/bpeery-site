@@ -1,103 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
-<!--
-  ================================================================
-  sitemap.xml — bpeery.com
-  Brian Peery Real Estate | Las Vegas, NV
-  ================================================================
-  Submit this file to:
-  • Google Search Console: search.google.com/search-console
-  • Bing Webmaster Tools: bing.com/webmasters
-  • Yandex Webmaster: webmaster.yandex.com
-  ================================================================
--->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- ── HOMEPAGE — Highest priority ── -->
-  <url>
-    <loc>https://bpeery.com/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://bpeery.com/og-image.jpg</image:loc>
-      <image:title>Brian Peery — Las Vegas Luxury Real Estate Specialist | 89117 &amp; 89135</image:title>
-      <image:caption>Brian Peery, Realty ONE Group Summerlin — specializing in 89117 and 89135 Summerlin real estate</image:caption>
-    </image:image>
-  </url>
-
-  <!-- ── FREE MARKET SNAPSHOT — Lead capture, high value ── -->
-  <url>
-    <loc>https://bpeery.com/#snapshot</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
-  <!-- ── BOOK A CONSULTATION ── -->
-  <url>
-    <loc>https://bpeery.com/#book</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <!-- ── MARKET DATA — Updated monthly ── -->
-  <url>
-    <loc>https://bpeery.com/#market</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- ── CALCULATORS — High keyword value ── -->
-  <url>
-    <loc>https://bpeery.com/#calculators</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- ── SCORE TOOL ── -->
-  <url>
-    <loc>https://bpeery.com/#score</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <!-- ── REAL ESTATE GAME — Engagement tool ── -->
-  <url>
-    <loc>https://bpeery.com/#game</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-
-  <!-- ── ABOUT BRIAN ── -->
-  <url>
-    <loc>https://bpeery.com/#about</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.70</priority>
-  </url>
-
-  <!-- ── CONTACT ── -->
-  <url>
-    <loc>https://bpeery.com/#contact</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://bpeery.com/privacy.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.30</priority>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bpeery.com/</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/red-rock-country-club</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/the-summit-club</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/the-ridges</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/the-preserve</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/siena</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/canyon-gate</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/tournament-hills</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/communities/the-canyons</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/1031</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/tools</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/about</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/contact</loc><lastmod>2026-11-05</lastmod></url>
+  <url><loc>https://bpeery.com/privacy</loc><lastmod>2026-11-05</lastmod></url>
 </urlset>

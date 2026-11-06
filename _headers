@@ -3,7 +3,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Permissions-Policy: camera=(), microphone=(), geolocation=(self)
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 
 /*.html
   Cache-Control: no-cache, must-revalidate
@@ -11,5 +11,11 @@
 /
   Cache-Control: no-cache, must-revalidate
 
-/sitemap.xml
-  Cache-Control: public, max-age=86400
+/styles.css
+  Cache-Control: public, max-age=3600
+
+/site.js
+  Cache-Control: public, max-age=3600
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

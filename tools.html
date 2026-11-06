@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home Buying and Selling Calculators | Brian Peery, Las Vegas</title>
+<meta name="description" content="Monthly payment, affordability and seller net-proceeds calculators for homes in Las Vegas, plus a 1031 exchange deadline calculator.">
+<link rel="canonical" href="https://bpeery.com/tools">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home Buying and Selling Calculators | Brian Peery, Las Vegas">
+<meta property="og:description" content="Monthly payment, affordability and seller net-proceeds calculators for homes in Las Vegas, plus a 1031 exchange deadline calculator.">
+<meta property="og:url" content="https://bpeery.com/tools">
+<meta name="theme-color" content="#1C2541">
+<link rel="preload" href="/fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/spectral-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231C2541'/%3E%3Cpath d='M8 44 L22 28 L30 36 L40 22 L56 44 Z' fill='%23D98C3F'/%3E%3C/svg%3E">
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="/" aria-label="Brian Peery, home">
+      <span class="brand-name">Brian Peery</span>
+      <span class="brand-firm">Realty ONE Group Summerlin</span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Main"><a href="/">Home</a><a href="/communities/">Communities</a><a href="/1031">1031 exchanges</a><a href="/tools" aria-current="page">Tools</a><a href="/about">About</a><a class="btn" href="/contact">Contact Brian</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <h1>Run the numbers</h1>
+    <p class="lede">Quick estimates to start a conversation. For a real number on a real home, I&rsquo;ll work it through with you.</p>
+  </div>
+</section>
+<section class="band band-paper" style="padding-top:48px">
+  <div class="wrap">
+    <div class="tool">
+      <h3>Monthly payment</h3>
+      <div class="form" style="grid-template-columns:repeat(3,1fr)">
+        <div><label for="m-price">Home price ($)</label><input id="m-price" inputmode="decimal" value="750000"></div><div><label for="m-down">Down payment ($)</label><input id="m-down" inputmode="decimal" value="150000"></div><div><label for="m-rate">Interest rate (%)</label><input id="m-rate" inputmode="decimal" value="6.5"></div>
+        <div><label for="m-years">Loan term (years)</label><input id="m-years" inputmode="decimal" value="30"></div><div><label for="m-tax">Property tax ($ a year)</label><input id="m-tax" inputmode="decimal" value="4500"></div><div><label for="m-ins">Insurance ($ a year)</label><input id="m-ins" inputmode="decimal" value="1800"></div>
+        <div><label for="m-hoa">HOA ($ a month)</label><input id="m-hoa" inputmode="decimal" value="150"></div>
+      </div>
+      <div class="result" aria-live="polite"><b id="m-total">&mdash;</b>
+        <dl><dt>Loan amount</dt><dd id="m-loan"></dd><dt>Principal and interest</dt><dd id="m-pi"></dd><dt>Property tax</dt><dd id="m-taxm"></dd><dt>Insurance</dt><dd id="m-insm"></dd><dt>HOA</dt><dd id="m-hoam"></dd></dl></div>
+    </div>
+    <div class="tool">
+      <h3>What can I afford?</h3>
+      <div class="form" style="grid-template-columns:repeat(3,1fr)">
+        <div><label for="a-income">Household income ($ a year)</label><input id="a-income" inputmode="decimal" value="200000"></div><div><label for="a-debts">Other debt payments ($ a month)</label><input id="a-debts" inputmode="decimal" value="800"></div><div><label for="a-down">Down payment ($)</label><input id="a-down" inputmode="decimal" value="150000"></div>
+        <div><label for="a-rate">Interest rate (%)</label><input id="a-rate" inputmode="decimal" value="6.5"></div><div><label for="a-share">Share of income for housing (%)</label><input id="a-share" inputmode="decimal" value="28"></div>
+      </div>
+      <div class="result" aria-live="polite"><b id="a-price">&mdash;</b>
+        <dl><dt>Monthly housing budget</dt><dd id="a-pay"></dd><dt>Loan amount (30 years)</dt><dd id="a-loan"></dd></dl>
+        <p class="small" style="margin-top:8px">Uses the lower of your housing share and 36% of income minus other debts, and sets aside about a fifth of the budget for taxes, insurance and HOA. A lender&rsquo;s pre-approval is the real answer.</p></div>
+    </div>
+    <div class="tool">
+      <h3>What would I net from selling?</h3>
+      <div class="form" style="grid-template-columns:repeat(3,1fr)">
+        <div><label for="n-price">Sale price ($)</label><input id="n-price" inputmode="decimal" value="800000"></div><div><label for="n-owed">Mortgage payoff ($)</label><input id="n-owed" inputmode="decimal" value="350000"></div><div><label for="n-comm">Commissions (%)</label><input id="n-comm" inputmode="decimal" value="5"></div>
+        <div><label for="n-close">Other closing costs (%)</label><input id="n-close" inputmode="decimal" value="1"></div><div><label for="n-other">Repairs or credits ($)</label><input id="n-other" inputmode="decimal" value="5000"></div>
+      </div>
+      <div class="result" aria-live="polite"><b id="n-net">&mdash;</b>
+        <dl><dt>Mortgage payoff</dt><dd id="n-owedv"></dd><dt>Commissions</dt><dd id="n-commv"></dd><dt>Other closing costs</dt><dd id="n-closev"></dd><dt>Repairs or credits</dt><dd id="n-otherv"></dd></dl>
+        <p class="small" style="margin-top:8px">Commissions are negotiable and set by agreement; enter your own figure.</p></div>
+    </div>
+    <p class="mt">Selling an investment property? Use the <a href="/1031">1031 deadline calculator</a>.</p>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-name">Brian Peery</div>
+        <p style="margin-top:8px">Gated golf and trail communities in west Las Vegas</p>
+        <p style="margin-top:14px">Call or text <a href="tel:+14159991044">(415) 999-1044</a><br><a href="mailto:brian@bpeery.com">brian@bpeery.com</a></p>
+        <p style="margin-top:14px">Realty ONE Group Summerlin<br>10750 W. Charleston Blvd., Ste 180, Las Vegas, NV 89135</p>
+      </div>
+      <div>
+        <ul class="foot-list">
+          <li><a href="/communities/">Communities</a></li>
+          <li><a href="/1031">1031 exchanges</a></li>
+          <li><a href="/tools">Tools</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="foot-list">
+          <li><a href="https://www.instagram.com/lovingwestLV/" rel="noopener" target="_blank">Instagram @lovingwestLV</a></li>
+          <li><a href="https://www.linkedin.com/in/brianpeery" rel="noopener" target="_blank">LinkedIn</a></li>
+          <li><a href="/privacy">Privacy notice</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p>Brian Peery, Nevada real estate salesperson, NV Lic. #S.189680, with Realty ONE Group Summerlin, 10750 W. Charleston Blvd., Ste 180, Las Vegas, NV 89135.</p>
+      <p>Each Realty ONE Group office is independently owned and operated. <span class="eho"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1 11h3v11h16V11h3L12 2zm-4 12h8v2H8v-2zm0 3h8v2H8v-2z" fill="currentColor"/></svg>Equal Housing Opportunity.</span></p>
+      <p>Information about 1031 exchanges is general and is not tax, legal or accounting advice; consult a qualified intermediary, CPA or attorney. Calculator results and home-value estimates are estimates only, not appraisals, and are not guaranteed.</p>
+      <p>&copy; <span data-year>2026</span> Brian Peery. Not intended to solicit properties already listed with another broker.</p>
+    </div>
+  </div>
+</footer>
+<script src="/site.js" defer></script>
+</body>
+</html>
