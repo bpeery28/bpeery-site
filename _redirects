@@ -1,7 +1,10 @@
 /index.html  /  301
 /home  /  301
 /1031-exchange  /1031  301
-/89117  /communities/canyon-gate  301
-/89117.html  /communities/canyon-gate  301
-/89135  /communities/  301
-/89135.html  /communities/  301
+/89117  /canyon-gate  301
+/89117.html  /canyon-gate  301
+/89135  /communities  301
+/89135.html  /communities  301
+/communities/  /communities  301
+/communities/*  /:splat  301
+/fonts/*  /:splat  301
