@@ -36,7 +36,27 @@
     <p class="lede">Call or text <a href="tel:+14159991044">(415) 999-1044</a>, email <a href="mailto:brian@bpeery.com">brian@bpeery.com</a>, or use the form. I reply to every message personally.</p>
   </div>
 </section>
-<section class="band band-paper" style="padding-top:48px">
+<section class="band band-paper" id="book" style="padding-top:48px">
+  <div class="wrap split">
+    <div><h2>Book a 15-minute call</h2><p style="margin-top:12px">Pick any open time and I&rsquo;ll call you at the number you give. Use it to talk through a move, a sale, or whether a 1031 exchange fits.</p><p class="small" style="margin-top:12px">Scheduling runs on Cal.com, which loads only when you click.</p></div>
+    <div>
+      <div id="cal-inline" class="cal-box">
+        <button class="btn" type="button" id="cal-load">Show open times</button>
+        <p class="small" style="margin-top:12px">Or open the booking page directly: <a href="https://cal.com/brianpeery/15min" target="_blank" rel="noopener">cal.com/brianpeery/15min</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+document.getElementById('cal-load').addEventListener('click',function(){
+  var box=document.getElementById('cal-inline');box.innerHTML='';box.classList.add('open');
+  (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "consult", {origin: "https://app.cal.com"});
+  Cal.ns.consult("inline", {elementOrSelector: "#cal-inline", calLink: "brianpeery/15min", config: {layout: "month_view"}});
+  Cal.ns.consult("ui", {hideEventTypeDetails: false, layout: "month_view"});
+});
+</script>
+<section class="band band-paper" style="padding-top:24px">
   <div class="wrap split">
     <div><h2>Send a message</h2><p class="small" style="margin-top:12px">Realty ONE Group Summerlin<br>10750 W. Charleston Blvd., Ste 180, Las Vegas, NV 89135</p></div>
     <div>
