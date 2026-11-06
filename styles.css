@@ -200,3 +200,5 @@ p{max-width:36em}
 .comm-grid.on-dark .comm-short{color:#C9CEDB}
 @media (max-width:1000px){.comm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.comm-grid{grid-template-columns:1fr}}
+.cal-box{background:#fff;border:1px solid var(--rule);border-radius:6px;padding:28px}
+.cal-box.open{padding:0;min-height:640px;overflow:auto}
