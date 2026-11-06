@@ -1,0 +1,101 @@
+# ================================================================
+# robots.txt — bpeery.com
+# Brian Peery Real Estate | Las Vegas, NV
+# ================================================================
+# This file tells search engine crawlers (Google, Bing, etc.)
+# which pages to index and how frequently to crawl the site.
+# ================================================================
+
+# Allow all major search engines full access
+User-agent: *
+Allow: /
+
+# Block access to any private or admin areas (none exist yet,
+# but this is standard practice for future-proofing)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /*.json$
+Disallow: /wp-admin/
+
+# Crawl delay — be polite to servers (in seconds)
+Crawl-delay: 1
+
+# ── GOOGLE ──
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+# ── BING / MICROSOFT ──
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: MSNBot
+Allow: /
+
+# ── AI CRAWLERS (for Claude, ChatGPT, Perplexity visibility) ──
+# Allowing these increases chance your site appears in
+# AI-generated answers and summaries
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# ── SOCIAL MEDIA PREVIEW CRAWLERS ──
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# ── SPAM BOTS — BLOCK ──
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# ================================================================
+# SITEMAP LOCATION
+# Tells all crawlers exactly where to find the sitemap
+# ================================================================
+Sitemap: https://bpeery.com/sitemap.xml
