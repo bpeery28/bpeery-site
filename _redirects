@@ -5,6 +5,8 @@
 /89117.html  /canyon-gate  301
 /89135  /communities  301
 /89135.html  /communities  301
+/the-preserve  /the-cliffs  301
+/communities/the-preserve  /the-cliffs  301
 /communities/  /communities  301
 /communities/*  /:splat  301
 /fonts/*  /:splat  301
